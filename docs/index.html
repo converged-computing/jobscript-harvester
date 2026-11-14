@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jobscript Corpus</title>
+<meta name="description" content="A corpus of Slurm, PBS, LSF, Flux, OAR, and Cobalt jobscripts from public GitHub repositories, with content, pinned commits, and parsed labels.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#overview">Jobscript Corpus</a>
+    <nav aria-label="Sections">
+      <a href="#overview">Overview</a><a href="#pipeline">Pipeline</a><a href="#corpus">Corpus</a><a href="#labels">Labels</a><a href="#browse">Browse</a><a href="#data">Get the data</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="overview">
+    <h1>Batch jobscripts from public GitHub, with what each one asks for</h1>
+    <p class="lede"><b data-n="scripts">–</b> unique jobscripts for six workload managers, found in <b data-n="repos_with_scripts">–</b> public repositories. Every script comes with its full text, a permalink to the commit it was read from, and labels parsed from its directives: nodes, tasks, GPUs, memory, walltime, queue, and every option it sets.</p>
+    <div class="tiles" id="tiles"></div>
+    <p class="stamp">Built <span id="generated">–</span> with <span id="repo-link">jobscript-harvester</span>.</p>
+  </section>
+
+  <section id="pipeline">
+    <h2>How the corpus was built</h2>
+    <p>GitHub's web code search returns at most 100 results per query, so the harvester splits a query that hits the cap into narrower ones by language, archived state, file extension, directive option, and software term, until each returns fewer than 100. Search results only identify repositories. Each repository is then shallow-cloned and every file under 384 KB is checked for directive lines, so one hit can yield many scripts.</p>
+    <div class="grid">
+      <div class="card"><h3>From queries to scripts</h3><p class="note">Counts at each stage.</p><div id="funnel" class="bars"></div></div>
+      <div class="card"><h3>Repositories discovered as the search ran</h3><p class="note">Cumulative distinct repositories against queries run, in order. Flat stretches are splits that only re-surfaced known repositories.</p><div id="discovery" class="chart"></div></div>
+      <div class="card span"><h3>Search by directive</h3><p class="note">A saturated query returned 100 results and was split further. <span id="capped-note"></span></p>
+        <div class="scroll"><table id="search-table"><thead><tr><th>Directive</th><th class="n">Queries</th><th class="n">With results</th><th class="n">Empty</th><th class="n">Saturated</th><th class="n">Hits</th><th class="n">Repositories</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="corpus">
+    <h2>What is in it</h2>
+    <div class="grid">
+      <div class="card"><h3>Scripts by workload manager</h3><p class="note">Unique scripts carrying each manager's directives. <span id="multi-note"></span></p><div id="by-manager" class="bars"></div></div>
+      <div class="card"><h3>Script size</h3><p class="note">Unique scripts by size in bytes.</p><div id="sizes" class="cols"></div></div>
+      <div class="card"><h3>Scripts per repository</h3><p class="note">Scanned repositories by how many jobscript files they hold. <span id="tail-note"></span></p><div id="per-repo" class="cols"></div></div>
+      <div class="card"><h3>How often the same script recurs</h3><p class="note">Unique scripts by the number of places the identical content was found.</p><div id="duplication" class="cols"></div></div>
+      <div class="card"><h3>File extensions</h3><p class="note">Most common extensions among kept files.</p><div id="extensions" class="bars"></div></div>
+      <div class="card"><h3>Repository licenses</h3><p class="note" id="license-note">Repositories with scripts, by license reported by GitHub.</p><div id="licenses" class="bars"></div></div>
+      <div class="card span"><h3>Largest contributors</h3><p class="note">Repositories with the most jobscript files. Many hold generated per-sample or per-run submission scripts.</p><div id="top-repos" class="bars"></div></div>
+    </div>
+  </section>
+
+  <section id="labels">
+    <h2>What the scripts ask for</h2>
+    <p>Labels come only from directive lines, read the way each manager reads them: for example Slurm stops at the first command, and PBS allows line continuation. Nothing is inferred from the script body.</p>
+    <div class="toolbar"><label for="label-manager">Workload manager</label><select id="label-manager"></select><span class="muted" id="label-rows"></span></div>
+    <div class="grid">
+      <div class="card"><h3>How often each resource is stated</h3><p class="note">Share of scripts whose directives set each value.</p><div id="coverage" class="bars"></div></div>
+      <div class="card"><h3>Most used directive options</h3><p class="note">Share of scripts that set each option at least once.</p><div id="options" class="bars"></div></div>
+      <div class="card"><h3>Requested walltime</h3><p class="note">Scripts that state a time limit.</p><div id="walltime" class="cols"></div></div>
+      <div class="card"><h3>Requested nodes</h3><p class="note">Scripts that state a fixed node count.</p><div id="nodes" class="cols"></div></div>
+    </div>
+    <p class="muted" id="parse-note"></p>
+  </section>
+
+  <section id="browse">
+    <h2>Browse a sample</h2>
+    <p>A fixed sample of <span id="sample-size">–</span> scripts per manager, limited to scripts under <span id="sample-max">–</span> bytes, with email addresses removed. To search all <span data-n="scripts">–</span> scripts, run the local explorer described under <a href="#data">Get the data</a>.</p>
+    <div class="toolbar">
+      <label for="b-manager">Workload manager</label><select id="b-manager"></select>
+      <label for="b-text">Contains</label><input id="b-text" type="search" placeholder="text in script, repository, or path">
+      <label class="check"><input type="checkbox" id="b-gpu">Requests GPUs</label>
+      <span class="muted" id="b-count"></span>
+    </div>
+    <div class="browser">
+      <div class="list" id="b-list" role="listbox" aria-label="Sample scripts"></div>
+      <div class="detail" id="b-detail"><p class="muted">Select a script.</p></div>
+    </div>
+  </section>
+
+  <section id="data">
+    <h2>Get the data</h2>
+    <p id="data-link"></p>
+    <div class="grid">
+      <div class="card"><h3>Files</h3>
+        <ul>
+          <li><code>scripts/scripts-XX.jsonl.gz</code>: one JSON record per unique script, in 256 files keyed by the first two hex digits of the script's git blob SHA.</li>
+          <li><code>index.csv.gz</code>: one row per script and manager with flat metadata and labels, no content. Start here for analysis.</li>
+          <li><code>repos.csv.gz</code>: one row per repository with license, stars, and scan status.</li>
+          <li><code>manifest.json</code>: counts, field descriptions, and a SHA-256 for every file.</li>
+        </ul>
+      </div>
+      <div class="card"><h3>One script record</h3>
+        <ul>
+          <li><code>blob_sha</code>, <code>size</code>, <code>managers</code>, <code>directive_lines</code></li>
+          <li><code>content</code>: the script text</li>
+          <li><code>occurrences</code>: each repository, commit, path, permalink, and license where it was found</li>
+          <li><code>labels</code>: per manager, every option read and the normalized fields</li>
+          <li><code>totals</code>: per manager, job-level nodes, tasks, GPUs, walltime, queue, array size</li>
+        </ul>
+      </div>
+      <div class="card span"><h3>Load it</h3>
+<pre><code>import gzip, json
+import pandas as pd
+
+index = pd.read_csv("index.csv.gz")
+gpu_jobs = index[(index.manager == "slurm") &amp; (index.gpu_request == 1)]
+
+def script(blob_sha):                       # full record, with content
+    with gzip.open(f"scripts/scripts-{blob_sha[:2]}.jsonl.gz", "rt") as fh:
+        return next(r for r in map(json.loads, fh) if r["blob_sha"] == blob_sha)</code></pre>
+      </div>
+      <div class="card span"><h3>Search everything locally</h3>
+        <p>With the SQLite database in the repository directory, the explorer serves a search interface over every script: filter by manager, repository, path, queue, nodes, tasks, GPUs, walltime, or any text in the script.</p>
+<pre><code>python3 explorer.py        # then open http://127.0.0.1:8000</code></pre>
+      </div>
+      <div class="card span"><h3>Before you reuse scripts</h3>
+        <p id="reuse-note">Scripts are copied from public repositories and remain under their repositories' terms. Scripts can contain account names, email addresses, and home paths.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="wrap"><p class="muted">Figures on this page are generated from the harvest database by <code>build_docs.py</code>.</p></footer>
+<script src="app.js"></script>
+</body>
+</html>

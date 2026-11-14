@@ -1,0 +1,214 @@
+{
+ "options": {
+  "--add-file": {
+   "arg": "required",
+   "doc": "common/job-other-options.rst"
+  },
+  "--bank": {
+   "arg": "required",
+   "doc": "common/job-param-additional.rst"
+  },
+  "--begin-time": {
+   "arg": "required",
+   "doc": "common/job-other-options.rst"
+  },
+  "--bg": {
+   "arg": "none",
+   "doc": "common/job-other-batch.rst"
+  },
+  "--broker-opts": {
+   "arg": "required",
+   "doc": "common/job-other-batch.rst"
+  },
+  "--conf": {
+   "arg": "required",
+   "doc": "common/job-other-batch.rst"
+  },
+  "--cores-per-slot": {
+   "arg": "required",
+   "doc": "common/job-param-batch.rst"
+  },
+  "--cwd": {
+   "arg": "required",
+   "doc": "common/job-other-options.rst"
+  },
+  "--dependency": {
+   "arg": "required",
+   "doc": "common/job-dependencies.rst"
+  },
+  "--dry-run": {
+   "arg": "none",
+   "doc": "common/job-other-options.rst"
+  },
+  "--dump": {
+   "arg": "required",
+   "doc": "common/job-other-batch.rst"
+  },
+  "--env": {
+   "arg": "required",
+   "doc": "common/job-environment.rst"
+  },
+  "--env-file": {
+   "arg": "required",
+   "doc": "common/job-environment.rst"
+  },
+  "--env-remove": {
+   "arg": "required",
+   "doc": "common/job-environment.rst"
+  },
+  "--error": {
+   "arg": "required",
+   "doc": "common/job-standard-io.rst"
+  },
+  "--exclusive": {
+   "arg": "none",
+   "doc": "common/job-param-batch.rst"
+  },
+  "--flags": {
+   "arg": "required",
+   "doc": "common/job-param-additional.rst"
+  },
+  "--gpus-per-slot": {
+   "arg": "required",
+   "doc": "common/job-param-batch.rst"
+  },
+  "--input": {
+   "arg": "required",
+   "doc": "common/job-standard-io.rst"
+  },
+  "--job-name": {
+   "arg": "required",
+   "doc": "common/job-param-additional.rst"
+  },
+  "--label-io": {
+   "arg": "none",
+   "doc": "common/job-standard-io.rst"
+  },
+  "--nodes": {
+   "arg": "required",
+   "doc": "common/job-param-batch.rst"
+  },
+  "--nslots": {
+   "arg": "required",
+   "doc": "common/job-param-batch.rst"
+  },
+  "--output": {
+   "arg": "required",
+   "doc": "common/job-standard-io.rst"
+  },
+  "--queue": {
+   "arg": "required",
+   "doc": "common/job-param-additional.rst"
+  },
+  "--quiet": {
+   "arg": "none",
+   "doc": "common/job-other-batch.rst"
+  },
+  "--requires": {
+   "arg": "required",
+   "doc": "common/job-constraints.rst"
+  },
+  "--rlimit": {
+   "arg": "required",
+   "doc": "common/job-process-resource-limits.rst"
+  },
+  "--setattr": {
+   "arg": "required",
+   "doc": "common/job-other-options.rst"
+  },
+  "--setopt": {
+   "arg": "required",
+   "doc": "common/job-other-options.rst"
+  },
+  "--signal": {
+   "arg": "required",
+   "doc": "common/job-other-options.rst"
+  },
+  "--time-limit": {
+   "arg": "required",
+   "doc": "common/job-param-additional.rst"
+  },
+  "--unbuffered": {
+   "arg": "none",
+   "doc": "common/job-standard-io.rst"
+  },
+  "--urgency": {
+   "arg": "required",
+   "doc": "common/job-other-options.rst"
+  },
+  "--verbose": {
+   "arg": "none",
+   "doc": "common/job-other-options.rst"
+  },
+  "--wrap": {
+   "arg": "none",
+   "doc": "common/job-other-batch.rst"
+  },
+  "-B": {
+   "arg": "required",
+   "doc": "common/job-param-additional.rst",
+   "long": "--bank"
+  },
+  "-N": {
+   "arg": "required",
+   "doc": "common/job-param-batch.rst",
+   "long": "--nodes"
+  },
+  "-S": {
+   "arg": "required",
+   "doc": "common/job-other-options.rst",
+   "long": "--setattr"
+  },
+  "-c": {
+   "arg": "required",
+   "doc": "common/job-param-batch.rst",
+   "long": "--cores-per-slot"
+  },
+  "-g": {
+   "arg": "required",
+   "doc": "common/job-param-batch.rst",
+   "long": "--gpus-per-slot"
+  },
+  "-l": {
+   "arg": "none",
+   "doc": "common/job-standard-io.rst",
+   "long": "--label-io"
+  },
+  "-n": {
+   "arg": "required",
+   "doc": "common/job-param-batch.rst",
+   "long": "--nslots"
+  },
+  "-o": {
+   "arg": "required",
+   "doc": "common/job-other-options.rst",
+   "long": "--setopt"
+  },
+  "-q": {
+   "arg": "required",
+   "doc": "common/job-param-additional.rst",
+   "long": "--queue"
+  },
+  "-t": {
+   "arg": "required",
+   "doc": "common/job-param-additional.rst",
+   "long": "--time-limit"
+  },
+  "-u": {
+   "arg": "none",
+   "doc": "common/job-standard-io.rst",
+   "long": "--unbuffered"
+  },
+  "-v": {
+   "arg": "none",
+   "doc": "common/job-other-options.rst",
+   "long": "--verbose"
+  },
+  "-x": {
+   "arg": "none",
+   "doc": "common/job-param-batch.rst",
+   "long": "--exclusive"
+  }
+ },
+ "source": "flux-core afd77fff430b88fb4874d15a39ca20b81d99eb90 doc/man1/flux-batch.rst and includes"
+}

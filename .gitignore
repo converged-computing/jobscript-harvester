@@ -1,0 +1,13 @@
+# Working database and derived files: too large for git. Publish as release assets instead.
+harvest.sqlite
+harvest.sqlite-journal
+harvest.sqlite.gz
+explorer-index.sqlite
+dataset/
+jobscripts.jsonl
+
+# Run by-products
+empty-pages/
+harvest-run.log
+__pycache__/
+.pytest_cache/

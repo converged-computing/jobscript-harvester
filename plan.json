@@ -1,0 +1,47 @@
+{
+  "base": "NOT is:fork",
+  "directives": {
+    "slurm": "\"#SBATCH\"",
+    "pbs": "\"#PBS\"",
+    "lsf": "\"#BSUB\"",
+    "cobalt": "\"#COBALT\"",
+    "oar": "\"#OAR\"",
+    "flux": "(\"# flux:\" OR \"#flux:\")"
+  },
+  "split": [
+    {"family": "language", "complement": true,
+     "values": ["language:Shell", "language:Python"]},
+    {"family": "archived", "complement": true,
+     "values": ["is:archived"]},
+    {"family": "extension", "complement": true,
+     "values": ["path:*.sh", "path:*.bash", "path:*.slurm", "path:*.sbatch", "path:*.job",
+                "path:*.pbs", "path:*.qsub", "path:*.lsf", "path:*.bsub", "path:*.py"]},
+    {"family": "license", "complement": true,
+     "values": ["license:MIT", "license:Apache-2.0", "license:GPL-3.0", "license:GPL-2.0",
+                "license:BSD-3-Clause", "license:BSD-2-Clause", "license:LGPL-3.0",
+                "license:AGPL-3.0", "license:MPL-2.0", "license:CC0-1.0", "license:Unlicense"]},
+    {"family": "option", "complement": true,
+     "values": {
+       "slurm": ["\"#SBATCH --gres\"", "\"#SBATCH --gpus\"", "\"#SBATCH --array\"",
+                 "\"#SBATCH --partition\"", "\"#SBATCH --nodes\"", "\"#SBATCH --ntasks-per-node\"",
+                 "\"#SBATCH --cpus-per-task\"", "\"#SBATCH --mem\"", "\"#SBATCH --account\"",
+                 "\"#SBATCH --qos\"", "\"#SBATCH --constraint\"", "\"#SBATCH --exclusive\"",
+                 "\"#SBATCH --dependency\"", "\"#SBATCH --time\""],
+       "pbs": ["\"#PBS -l select\"", "\"#PBS -l walltime\"", "\"#PBS -l place\"",
+               "\"#PBS -J\"", "\"#PBS -q\"", "\"#PBS -A\"", "\"#PBS -W depend\""],
+       "lsf": ["\"#BSUB -n\"", "\"#BSUB -W\"", "\"#BSUB -q\"", "\"#BSUB -R\"", "\"#BSUB -J\""],
+       "cobalt": ["\"#COBALT -n\"", "\"#COBALT -t\"", "\"#COBALT -q\"", "\"#COBALT -A\""],
+       "oar": ["\"#OAR -l\"", "\"#OAR -q\"", "\"#OAR -p\"", "\"#OAR -t\""],
+       "flux": ["\"flux: -N\"", "\"flux: -n\"", "\"flux: -g\"", "\"flux: --queue\"",
+                "\"flux: --setattr\"", "\"flux: --exclusive\"", "\"flux: --requires\""]
+     }},
+    {"family": "software",
+     "values": ["gmx", "namd", "lammps", "python", "amd", "amg", "cmake", "meson", "paraview",
+                "hpctoolkit", "ninja", "rust", "spack", "easybuild", "resnet", "pytorch",
+                "nvidia", "tensorflow", "pmix", "kripke", "quicksilver", "maestro",
+                "snakemake", "nextflow", "dask", "kube", "docker", "singularity", "valgrind",
+                "julia", "matlab", "nccl", "ray", "fio", "ior", "petsc"]},
+    {"family": "hpc",
+     "values": ["gpu", "gcc", "array", "module", "mpi", "roc", "cuda", "intel"]}
+  ]
+}

@@ -1,0 +1,625 @@
+{
+ "options": {
+  "NULL": {
+   "arg": "none",
+   "canonical": "NULL",
+   "short": null
+  },
+  "account": {
+   "arg": "required",
+   "canonical": "account",
+   "short": "A"
+  },
+  "acctg-freq": {
+   "arg": "required",
+   "canonical": "acctg-freq",
+   "short": null
+  },
+  "array": {
+   "arg": "required",
+   "canonical": "array",
+   "short": "a"
+  },
+  "autocomplete": {
+   "arg": "required",
+   "canonical": "autocomplete",
+   "short": null
+  },
+  "batch": {
+   "arg": "required",
+   "canonical": "batch",
+   "short": null
+  },
+  "bb": {
+   "arg": "required",
+   "canonical": "bb",
+   "short": null
+  },
+  "bbf": {
+   "arg": "required",
+   "canonical": "bbf",
+   "short": null
+  },
+  "begin": {
+   "arg": "required",
+   "canonical": "begin",
+   "short": "b"
+  },
+  "chdir": {
+   "arg": "required",
+   "canonical": "chdir",
+   "short": "D"
+  },
+  "cluster": {
+   "arg": "required",
+   "canonical": "clusters",
+   "short": null
+  },
+  "cluster-constraint": {
+   "arg": "required",
+   "canonical": "cluster-constraint",
+   "short": null
+  },
+  "clusters": {
+   "arg": "required",
+   "canonical": "clusters",
+   "short": "M"
+  },
+  "comment": {
+   "arg": "required",
+   "canonical": "comment",
+   "short": null
+  },
+  "consolidate-segments": {
+   "arg": "none",
+   "canonical": "consolidate-segments",
+   "short": null
+  },
+  "constraint": {
+   "arg": "required",
+   "canonical": "constraint",
+   "short": "C"
+  },
+  "container": {
+   "arg": "required",
+   "canonical": "container",
+   "short": null
+  },
+  "container-id": {
+   "arg": "required",
+   "canonical": "container-id",
+   "short": null
+  },
+  "container-type": {
+   "arg": "required",
+   "canonical": "container-type",
+   "short": null
+  },
+  "context": {
+   "arg": "required",
+   "canonical": "context",
+   "short": null
+  },
+  "contiguous": {
+   "arg": "none",
+   "canonical": "contiguous",
+   "short": null
+  },
+  "core-spec": {
+   "arg": "required",
+   "canonical": "core-spec",
+   "short": "S"
+  },
+  "cores-per-socket": {
+   "arg": "required",
+   "canonical": "cores-per-socket",
+   "short": null
+  },
+  "cpu-freq": {
+   "arg": "required",
+   "canonical": "cpu-freq",
+   "short": null
+  },
+  "cpus-per-gpu": {
+   "arg": "required",
+   "canonical": "cpus-per-gpu",
+   "short": null
+  },
+  "cpus-per-task": {
+   "arg": "required",
+   "canonical": "cpus-per-task",
+   "short": "c"
+  },
+  "deadline": {
+   "arg": "required",
+   "canonical": "deadline",
+   "short": null
+  },
+  "delay-boot": {
+   "arg": "required",
+   "canonical": "delay-boot",
+   "short": null
+  },
+  "dependency": {
+   "arg": "required",
+   "canonical": "dependency",
+   "short": "d"
+  },
+  "distribution": {
+   "arg": "required",
+   "canonical": "distribution",
+   "short": "m"
+  },
+  "error": {
+   "arg": "required",
+   "canonical": "error",
+   "short": "e"
+  },
+  "exclude": {
+   "arg": "required",
+   "canonical": "exclude",
+   "short": "x"
+  },
+  "exclusive": {
+   "arg": "optional",
+   "canonical": "exclusive",
+   "short": null
+  },
+  "export": {
+   "arg": "required",
+   "canonical": "export",
+   "short": null
+  },
+  "export-file": {
+   "arg": "required",
+   "canonical": "export-file",
+   "short": null
+  },
+  "external": {
+   "arg": "none",
+   "canonical": "external",
+   "short": null
+  },
+  "extra": {
+   "arg": "required",
+   "canonical": "extra",
+   "short": null
+  },
+  "extra-node-info": {
+   "arg": "required",
+   "canonical": "extra-node-info",
+   "short": "B"
+  },
+  "get-user-env": {
+   "arg": "none",
+   "canonical": "get-user-env",
+   "short": null
+  },
+  "gid": {
+   "arg": "required",
+   "canonical": "gid",
+   "short": null
+  },
+  "gpu-bind": {
+   "arg": "required",
+   "canonical": "gpu-bind",
+   "short": null
+  },
+  "gpu-freq": {
+   "arg": "required",
+   "canonical": "gpu-freq",
+   "short": null
+  },
+  "gpus": {
+   "arg": "required",
+   "canonical": "gpus",
+   "short": "G"
+  },
+  "gpus-per-node": {
+   "arg": "required",
+   "canonical": "gpus-per-node",
+   "short": null
+  },
+  "gpus-per-socket": {
+   "arg": "required",
+   "canonical": "gpus-per-socket",
+   "short": null
+  },
+  "gpus-per-task": {
+   "arg": "required",
+   "canonical": "gpus-per-task",
+   "short": null
+  },
+  "gres": {
+   "arg": "required",
+   "canonical": "gres",
+   "short": null
+  },
+  "gres-flags": {
+   "arg": "required",
+   "canonical": "gres-flags",
+   "short": null
+  },
+  "help": {
+   "arg": "none",
+   "canonical": "help",
+   "short": "h"
+  },
+  "hint": {
+   "arg": "required",
+   "canonical": "hint",
+   "short": null
+  },
+  "hold": {
+   "arg": "none",
+   "canonical": "hold",
+   "short": "H"
+  },
+  "ignore-pbs": {
+   "arg": "none",
+   "canonical": "ignore-pbs",
+   "short": null
+  },
+  "input": {
+   "arg": "required",
+   "canonical": "input",
+   "short": "i"
+  },
+  "job-name": {
+   "arg": "required",
+   "canonical": "job-name",
+   "short": "J"
+  },
+  "kill-on-invalid-dep": {
+   "arg": "required",
+   "canonical": "kill-on-invalid-dep",
+   "short": null
+  },
+  "layout": {
+   "arg": "required",
+   "canonical": "layout",
+   "short": null
+  },
+  "licenses": {
+   "arg": "required",
+   "canonical": "licenses",
+   "short": "L"
+  },
+  "mail-type": {
+   "arg": "required",
+   "canonical": "mail-type",
+   "short": null
+  },
+  "mail-user": {
+   "arg": "required",
+   "canonical": "mail-user",
+   "short": null
+  },
+  "max-pids": {
+   "arg": "required",
+   "canonical": "max-pids",
+   "short": null
+  },
+  "mcs-label": {
+   "arg": "required",
+   "canonical": "mcs-label",
+   "short": null
+  },
+  "mem": {
+   "arg": "required",
+   "canonical": "mem",
+   "short": null
+  },
+  "mem-bind": {
+   "arg": "required",
+   "canonical": "mem-bind",
+   "short": null
+  },
+  "mem-per-cpu": {
+   "arg": "required",
+   "canonical": "mem-per-cpu",
+   "short": null
+  },
+  "mem-per-gpu": {
+   "arg": "required",
+   "canonical": "mem-per-gpu",
+   "short": null
+  },
+  "mem-update": {
+   "arg": "required",
+   "canonical": "mem-update",
+   "short": null
+  },
+  "mincpus": {
+   "arg": "required",
+   "canonical": "mincpus",
+   "short": null
+  },
+  "network": {
+   "arg": "required",
+   "canonical": "network",
+   "short": null
+  },
+  "nice": {
+   "arg": "optional",
+   "canonical": "nice",
+   "short": null
+  },
+  "no-kill": {
+   "arg": "optional",
+   "canonical": "no-kill",
+   "short": "k"
+  },
+  "no-requeue": {
+   "arg": "none",
+   "canonical": "no-requeue",
+   "short": null
+  },
+  "nodefile": {
+   "arg": "required",
+   "canonical": "nodefile",
+   "short": "F"
+  },
+  "nodelist": {
+   "arg": "required",
+   "canonical": "nodelist",
+   "short": "w"
+  },
+  "nodes": {
+   "arg": "required",
+   "canonical": "nodes",
+   "short": "N"
+  },
+  "ntasks": {
+   "arg": "required",
+   "canonical": "ntasks",
+   "short": "n"
+  },
+  "ntasks-per-core": {
+   "arg": "required",
+   "canonical": "ntasks-per-core",
+   "short": null
+  },
+  "ntasks-per-gpu": {
+   "arg": "required",
+   "canonical": "ntasks-per-gpu",
+   "short": null
+  },
+  "ntasks-per-node": {
+   "arg": "required",
+   "canonical": "ntasks-per-node",
+   "short": null
+  },
+  "ntasks-per-socket": {
+   "arg": "required",
+   "canonical": "ntasks-per-socket",
+   "short": null
+  },
+  "ntasks-per-tres": {
+   "arg": "required",
+   "canonical": "ntasks-per-tres",
+   "short": null
+  },
+  "oom-kill-step": {
+   "arg": "optional",
+   "canonical": "oom-kill-step",
+   "short": null
+  },
+  "open-mode": {
+   "arg": "required",
+   "canonical": "open-mode",
+   "short": null
+  },
+  "output": {
+   "arg": "required",
+   "canonical": "output",
+   "short": "o"
+  },
+  "overcommit": {
+   "arg": "none",
+   "canonical": "overcommit",
+   "short": "O"
+  },
+  "oversubscribe": {
+   "arg": "none",
+   "canonical": "oversubscribe",
+   "short": "s"
+  },
+  "parsable": {
+   "arg": "none",
+   "canonical": "parsable",
+   "short": null
+  },
+  "partition": {
+   "arg": "required",
+   "canonical": "partition",
+   "short": "p"
+  },
+  "prefer": {
+   "arg": "required",
+   "canonical": "prefer",
+   "short": null
+  },
+  "priority": {
+   "arg": "required",
+   "canonical": "priority",
+   "short": null
+  },
+  "profile": {
+   "arg": "required",
+   "canonical": "profile",
+   "short": null
+  },
+  "propagate": {
+   "arg": "optional",
+   "canonical": "propagate",
+   "short": null
+  },
+  "qos": {
+   "arg": "required",
+   "canonical": "qos",
+   "short": "q"
+  },
+  "quiet": {
+   "arg": "none",
+   "canonical": "quiet",
+   "short": "Q"
+  },
+  "reboot": {
+   "arg": "none",
+   "canonical": "reboot",
+   "short": null
+  },
+  "requeue": {
+   "arg": "optional",
+   "canonical": "requeue",
+   "short": null
+  },
+  "reservation": {
+   "arg": "required",
+   "canonical": "reservation",
+   "short": null
+  },
+  "resources": {
+   "arg": "required",
+   "canonical": "resources",
+   "short": null
+  },
+  "resv-ports": {
+   "arg": "optional",
+   "canonical": "resv-ports",
+   "short": null
+  },
+  "runtime": {
+   "arg": "required",
+   "canonical": "runtime",
+   "short": null
+  },
+  "segment": {
+   "arg": "required",
+   "canonical": "segment",
+   "short": null
+  },
+  "signal": {
+   "arg": "required",
+   "canonical": "signal",
+   "short": null
+  },
+  "sockets-per-node": {
+   "arg": "required",
+   "canonical": "sockets-per-node",
+   "short": null
+  },
+  "spread-job": {
+   "arg": "none",
+   "canonical": "spread-job",
+   "short": null
+  },
+  "spread-segments": {
+   "arg": "none",
+   "canonical": "spread-segments",
+   "short": null
+  },
+  "stepmgr": {
+   "arg": "none",
+   "canonical": "stepmgr",
+   "short": null
+  },
+  "switches": {
+   "arg": "required",
+   "canonical": "switches",
+   "short": null
+  },
+  "tasks-per-node": {
+   "arg": "required",
+   "canonical": "ntasks-per-node",
+   "short": null
+  },
+  "test-only": {
+   "arg": "none",
+   "canonical": "test-only",
+   "short": null
+  },
+  "thread-spec": {
+   "arg": "required",
+   "canonical": "thread-spec",
+   "short": null
+  },
+  "threads-per-core": {
+   "arg": "required",
+   "canonical": "threads-per-core",
+   "short": null
+  },
+  "time": {
+   "arg": "required",
+   "canonical": "time",
+   "short": "t"
+  },
+  "time-min": {
+   "arg": "required",
+   "canonical": "time-min",
+   "short": null
+  },
+  "tmp": {
+   "arg": "required",
+   "canonical": "tmp",
+   "short": null
+  },
+  "tres-bind": {
+   "arg": "required",
+   "canonical": "tres-bind",
+   "short": null
+  },
+  "tres-per-task": {
+   "arg": "required",
+   "canonical": "tres-per-task",
+   "short": null
+  },
+  "uid": {
+   "arg": "required",
+   "canonical": "uid",
+   "short": null
+  },
+  "usage": {
+   "arg": "none",
+   "canonical": "usage",
+   "short": null
+  },
+  "use-min-nodes": {
+   "arg": "none",
+   "canonical": "use-min-nodes",
+   "short": null
+  },
+  "verbose": {
+   "arg": "none",
+   "canonical": "verbose",
+   "short": "v"
+  },
+  "version": {
+   "arg": "none",
+   "canonical": "version",
+   "short": "V"
+  },
+  "wait": {
+   "arg": "none",
+   "canonical": "wait",
+   "short": "W"
+  },
+  "wait-all-nodes": {
+   "arg": "required",
+   "canonical": "wait-all-nodes",
+   "short": null
+  },
+  "wckey": {
+   "arg": "required",
+   "canonical": "wckey",
+   "short": null
+  },
+  "wrap": {
+   "arg": "required",
+   "canonical": "wrap",
+   "short": null
+  }
+ },
+ "source": "SchedMD/slurm ed3742b6557c5781ca77d7c0d94ec996d3b4966b src/common/slurm_opt.c (options with an sbatch setter); plus documented-only options from https://slurm.schedmd.com/sbatch.html: container, container-type"
+}
