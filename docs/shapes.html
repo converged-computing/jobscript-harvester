@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Shapes · Jobscript Corpus</title>
+<meta name="description" content="What batch jobs ask for: resource requests from the jobscript corpus, written as Flux jobspecs and compared across workload managers.">
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">Jobscript Corpus</a>
+    <nav aria-label="Sections">
+      <a href="#overview">Shapes</a><a href="#managers">By manager</a><a href="#resources">Resources</a><a href="#attributes">Attributes</a><a href="#compare">Across managers</a><a href="#programs">Programs</a><a href="#limits">Caveats</a><a href="index.html">Corpus</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="overview">
+    <h1>The shapes of batch jobs</h1>
+    <p class="lede">We took the resource request from every script and wrote it as a Flux jobspec. That puts six workload managers in the same format, so we can count and compare them. There are <b id="n-shapes">–</b> shapes.</p>
+    <div class="tiles" id="tiles"></div>
+    <div class="grid">
+      <div class="card"><h3>What a shape is</h3>
+        <p class="note">The directives in a script turn into a small tree of resources. A slot holds one task.</p>
+<pre><code>#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=16
+#SBATCH --cpus-per-task=2
+#SBATCH --gpus-per-task=1
+#SBATCH --time=01:00:00</code></pre>
+<pre><code>node[2] &gt; slot[16] &gt; core[2] + gpu[1]
+duration 3600</code></pre>
+      </div>
+      <div class="card"><h3>How shapes are grouped</h3>
+        <p class="note">Here is the shape above at four levels of detail. A <code>*</code> means the script didn't give that number.</p>
+        <dl class="kv">
+          <dt>Exact</dt><dd class="mono">node[2]&gt;slot[16]&gt;core[2]+gpu[1]</dd>
+          <dt>Binned</dt><dd class="mono">node[2]&gt;slot[9-16]&gt;core[2]+gpu[1]</dd>
+          <dt>Totals</dt><dd class="mono">groups[2] tasks[17-32] cores[33-64] gpus[17-32]</dd>
+          <dt>Topology</dt><dd class="mono">node&gt;slot&gt;core+gpu</dd>
+        </dl>
+        <p class="note" style="margin-top:.8rem">Use totals to compare managers, since they don't depend on how each one writes a request. A group is a node, or a chunk in PBS.</p>
+      </div>
+    </div>
+    <p class="stamp">Percentages are of repositories unless we say otherwise. A repository with 5,000 scripts counts the same as one with a single script. Built <span id="generated">–</span>.</p>
+  </section>
+
+  <section id="managers">
+    <h2>Shapes by workload manager</h2>
+    <div class="toolbar">
+      <label for="m-manager">Workload manager</label><select id="m-manager" class="mgr"></select>
+      <label for="m-level">Group by</label><select id="m-level"><option value="binned">Binned shape</option><option value="neutral">Totals</option></select>
+      <span class="muted" id="m-count"></span>
+    </div>
+    <div class="grid">
+      <div class="card span"><h3>Most common shapes</h3><p class="note">Percent of repositories using this manager.</p><div id="m-motifs" class="bars wide"></div></div>
+      <div class="card"><h3>Tree structure</h3><p class="note">Which kinds of resource the request mentions.</p><div id="m-topology" class="bars wide"></div></div>
+      <div class="card"><h3>What scripts say, and what we had to fill in</h3><p class="note">Percent of scripts.</p><div id="m-specified" class="bars"></div></div>
+      <div class="card span"><h3>How big the requests are</h3><p class="note">Only repositories that give the value are counted.</p>
+        <div class="scroll"><table id="m-fields"><thead><tr><th>Value</th><th class="n">Given by</th><th class="n">25%</th><th class="n">Median</th><th class="n">75%</th><th class="n">90%</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resources">
+    <h2>How much jobs ask for</h2>
+    <p>How many nodes, tasks, cores and so on scripts request. A script that doesn't say how many nodes it wants is left out of the node chart. Hover over a column to see the numbers.</p>
+    <div class="toolbar">
+      <label for="r-manager">Workload manager</label><select id="r-manager" class="mgr"></select>
+      <label for="r-measure">Count</label><select id="r-measure" class="measure"><option value="2">Repositories</option><option value="1">Scripts</option></select>
+      <span class="muted" id="r-count"></span>
+    </div>
+    <div class="grid three" id="r-charts"></div>
+    <h3 class="sub">Compare managers</h3>
+    <div class="toolbar">
+      <label for="x-resource">Resource</label><select id="x-resource"></select>
+      <span class="muted">Percent of each manager's total. All six charts use the same scale.</span>
+    </div>
+    <div class="grid three" id="x-charts"></div>
+  </section>
+
+  <section id="attributes">
+    <h2>Attributes</h2>
+    <p>The other things scripts set, like the queue, the account and the job name. We show a name only if at least five repositories use it.</p>
+    <div class="toolbar">
+      <label for="a-manager">Workload manager</label><select id="a-manager" class="mgr"></select>
+      <label for="a-measure">Count</label><select id="a-measure" class="measure"><option value="2">Repositories</option><option value="1">Scripts</option></select>
+    </div>
+    <div class="grid">
+      <div class="card span"><h3>What scripts set</h3><p class="note" id="a-note"></p><div id="a-set" class="bars"></div></div>
+    </div>
+    <div class="grid three" id="a-values"></div>
+  </section>
+
+  <section id="compare">
+    <h2>Across managers</h2>
+    <p>How different are the jobs people submit to each manager? The numbers are Jensen-Shannon divergence: 0 means the same mix of jobs, 1 means nothing in common. Darker is more different.</p>
+    <div class="grid">
+      <div class="card"><h3>Resources</h3><p class="note">Comparing shapes by their totals.</p><div class="scroll"><table id="c-resources" class="matrix"></table></div></div>
+      <div class="card"><h3>Walltime</h3><p class="note">Comparing how long jobs ask to run.</p><div class="scroll"><table id="c-duration" class="matrix"></table></div></div>
+      <div class="card span"><h3>Shapes that stand out for <span id="c-name"></span></h3><p class="note">Shapes this manager has much more of than the others. Change the manager with the selector above.</p>
+        <div class="scroll"><table id="c-distinct"><thead><tr><th>Shape (totals)</th><th class="n">Repositories</th><th class="n">This manager</th><th class="n">Others</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs">
+    <h2>What runs in which shape</h2>
+    <p>We pull program names out of each script with simple rules: whatever follows <code>srun</code> or <code>mpirun</code>, other commands, and anything in a <code>module load</code>. No model is involved and names are left alone, so <code>gmx</code> and <code>gmx_mpi</code> show up separately.</p>
+    <div class="toolbar">
+      <label for="p-text">Name contains</label><input id="p-text" type="search" placeholder="lmp, gromacs, torch…">
+      <label for="p-kind">Kind</label><select id="p-kind"><option value="">Programs and modules</option><option value="run:">Programs</option><option value="module:">Modules</option></select>
+      <label for="p-sort">Sort by</label><select id="p-sort"><option value="1">Repositories</option><option value="5">Most unusual shape</option><option value="6">GPU share</option><option value="8">Median tasks</option></select>
+      <span class="muted" id="p-count"></span>
+    </div>
+    <div class="browser">
+      <div class="list" id="p-list" role="listbox" aria-label="Programs and modules"></div>
+      <div class="detail" id="p-detail"><p class="muted">Select a program or module.</p></div>
+    </div>
+  </section>
+
+  <section id="limits">
+    <h2>Caveats</h2>
+    <div class="card"><ul>
+      <li>We haven't checked the jobspecs with Flux yet.</li>
+      <li>Flux, OAR and Cobalt have 200 repositories or fewer each, so don't read much into their numbers.</li>
+      <li>We don't read PBS requests like <code>-l ncpus=</code> yet, so some PBS scripts look like they ask for nothing.</li>
+      <li>PBS <code>ngpus</code> and LSF <code>-gpu num=</code> mean different things at different sites. We treat both as GPUs per chunk or host.</li>
+      <li>If people copy a template and tweak it, each copy counts as its own repository.</li>
+      <li>Program names are messy. Shell functions and stray words get picked up. Trust the common names more than the rare ones.</li>
+    </ul></div>
+  </section>
+</main>
+<div id="tip" class="tip" role="status" hidden></div>
+<footer class="wrap"><p class="muted">Generated by <code>experiments/shapes</code> in the jobscript-harvester repository.</p></footer>
+<script src="shapes.js?v=3"></script>
+</body>
+</html>

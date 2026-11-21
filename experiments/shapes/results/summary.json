@@ -1,0 +1,150 @@
+{
+ "shapes": 784203,
+ "managers": {
+  "slurm": {
+   "scripts": 633600,
+   "repos": 41680,
+   "distinct_exact": 23011,
+   "distinct_binned": 4858,
+   "distinct_topology": 9,
+   "pct": {
+    "assumed_cores": 29.1,
+    "assumed_groups": 1.5,
+    "assumed_tasks": 31.1,
+    "flag_hetjob_first_component": 0.0,
+    "flag_node_range": 0.1,
+    "flag_several_gpu_requests": 0.9,
+    "flag_several_memory_requests": 0.0,
+    "loads_modules": 42.8,
+    "no_options": 4.4,
+    "no_resources": 6.9,
+    "runs_something": 88.9,
+    "slot_group": 1.6,
+    "slot_job": 0.5,
+    "slot_task": 91.0,
+    "specified_cores_per_task": 64.0,
+    "specified_gpus": 37.6,
+    "specified_groups": 55.4,
+    "specified_memory": 48.6,
+    "specified_tasks": 41.5,
+    "specified_tasks_per_group": 23.9,
+    "uses_launcher": 18.7
+   }
+  },
+  "pbs": {
+   "scripts": 113759,
+   "repos": 7584,
+   "distinct_exact": 3918,
+   "distinct_binned": 953,
+   "distinct_topology": 14,
+   "pct": {
+    "assumed_cores": 54.4,
+    "assumed_tasks": 37.0,
+    "flag_pbs_ngpus": 7.3,
+    "flag_several_chunk_types": 0.0,
+    "flag_several_memory_requests": 0.0,
+    "loads_modules": 54.7,
+    "no_options": 7.9,
+    "no_resources": 14.6,
+    "runs_something": 69.7,
+    "slot_group": 36.2,
+    "slot_task": 49.1,
+    "specified_cores_per_group": 31.0,
+    "specified_gpus": 19.5,
+    "specified_groups": 77.9,
+    "specified_memory": 36.2,
+    "specified_tasks_per_group": 48.4,
+    "uses_launcher": 16.0
+   }
+  },
+  "lsf": {
+   "scripts": 33737,
+   "repos": 2539,
+   "distinct_exact": 1178,
+   "distinct_binned": 473,
+   "distinct_topology": 9,
+   "pct": {
+    "assumed_cores": 90.3,
+    "assumed_groups": 0.5,
+    "assumed_tasks": 18.1,
+    "flag_several_memory_requests": 0.2,
+    "loads_modules": 39.5,
+    "no_options": 0.1,
+    "no_resources": 9.7,
+    "runs_something": 89.7,
+    "slot_group": 16.2,
+    "slot_job": 3.3,
+    "slot_task": 70.9,
+    "specified_gpus": 33.0,
+    "specified_groups": 60.3,
+    "specified_memory": 50.6,
+    "specified_tasks": 71.7,
+    "specified_tasks_per_group": 12.1,
+    "uses_launcher": 9.3
+   }
+  },
+  "flux": {
+   "scripts": 1369,
+   "repos": 78,
+   "distinct_exact": 65,
+   "distinct_binned": 55,
+   "distinct_topology": 5,
+   "pct": {
+    "assumed_cores": 64.9,
+    "assumed_tasks": 61.1,
+    "loads_modules": 59.7,
+    "no_options": 1.8,
+    "no_resources": 32.9,
+    "runs_something": 90.7,
+    "slot_job": 0.1,
+    "slot_task": 67.1,
+    "specified_cores_per_task": 2.3,
+    "specified_gpus": 2.3,
+    "specified_groups": 65.4,
+    "specified_tasks": 6.0,
+    "uses_launcher": 26.2
+   }
+  },
+  "oar": {
+   "scripts": 901,
+   "repos": 200,
+   "distinct_exact": 55,
+   "distinct_binned": 39,
+   "distinct_topology": 5,
+   "pct": {
+    "assumed_cores": 48.1,
+    "assumed_tasks": 68.9,
+    "flag_oar_cpu_as_core": 0.4,
+    "flag_several_resource_requests": 0.9,
+    "loads_modules": 33.1,
+    "no_options": 9.7,
+    "no_resources": 31.1,
+    "runs_something": 92.3,
+    "slot_task": 68.9,
+    "specified_cores": 2.3,
+    "specified_cores_per_group": 18.5,
+    "specified_gpus": 19.6,
+    "specified_groups": 61.9,
+    "uses_launcher": 11.2
+   }
+  },
+  "cobalt": {
+   "scripts": 837,
+   "repos": 77,
+   "distinct_exact": 23,
+   "distinct_binned": 13,
+   "distinct_topology": 2,
+   "pct": {
+    "assumed_cores": 78.3,
+    "assumed_tasks": 78.3,
+    "loads_modules": 37.3,
+    "no_options": 15.3,
+    "no_resources": 21.7,
+    "runs_something": 87.9,
+    "slot_task": 78.3,
+    "specified_groups": 78.3,
+    "uses_launcher": 49.8
+   }
+  }
+ }
+}
